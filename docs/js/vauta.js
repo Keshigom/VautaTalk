@@ -1,4 +1,7 @@
+
 const TargetCanvas = "threeCanvas";
+const threeCanvasHeight = 210;
+const threeCanvasWidth = 280;
 
 if (WEBGL.isWebGLAvailable() === false) {
 
@@ -40,7 +43,7 @@ var VAUTA = VAUTA || {};
     let camera, scene, renderer;
     const initThree = (canvas) => {
 
-        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.25, 20);
+        camera = new THREE.PerspectiveCamera(45, threeCanvasWidth / threeCanvasHeight, 0.25, 20);
         camera.position.set(0, 1.5, - 1);
 
         controls = new THREE.OrbitControls(camera, canvas);
@@ -66,7 +69,8 @@ var VAUTA = VAUTA || {};
         //renderer.setPixelRatio(window.devicePixelRatio);
         //ピクセル比を1:1に
         renderer.setPixelRatio(1);
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        //renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(threeCanvasWidth, threeCanvasHeight);
         renderer.gammaOutput = true;
         renderer.shadowMap.autoUpdate = false;
     }
@@ -134,7 +138,7 @@ var VAUTA = VAUTA || {};
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
     }
-    window.addEventListener("resize", onWindowResize, false);
+    //window.addEventListener("resize", onWindowResize, false);
 
 
     // 設定項目
