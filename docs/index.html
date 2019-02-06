@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<head>
+	<title>Vauta</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<!-- <script src="lib/jeeliz/jeelizFaceTransfer.js"></script> -->
+
+	<!-- Material Design Lite -->
+	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-red.min.css" />
+	<!-- Material Design icon font -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" type="text/css" href="styles/main.css">
+
+</head>
+
+<body>
+	<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+
+		<div class="mdl-layout__drawer">
+
+			<span class="mdl-layout-title">
+				<img src="assets/img/logo.png" style="height: 50px" alt="">
+			</span>
+			<ul class="demo-list-item mdl-list">
+				<!-- 基本設定 -->
+				<li class="mdl-layout">
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect accordion"><span class="settingName">基本設定</span></button>
+					<div class="closed" style="margin-left: 20px">
+						<label class="mdl-checkbox mdl-js-checkbox" for="isMirror">
+							<input type="checkbox" id="isMirror" class="mdl-checkbox__input toggleSetting" value=true checked>
+							<span class="mdl-checkbox__label">ミラーモード</span>
+						</label>
+						<!-- アンチエイリアスは宣言時のみ変更可能 -->
+						<!-- <label class="mdl-checkbox mdl-js-checkbox" for="isAntialias">
+							<input type="checkbox" id="isAntialias" class="mdl-checkbox__input toggleSetting">
+							<span class="mdl-checkbox__label">アンチエイリアス</span>
+						</label> -->
+						<!-- <label class="mdl-checkbox mdl-js-checkbox" for="isDebug">
+							<input type="checkbox" id="isDebug" class="mdl-checkbox__input toggleSetting">
+							<span class="mdl-checkbox__label">デバッグモード</span>
+						</label> -->
+					</div>
+				</li>
+				<!-- 背景設定 -->
+				<li class="mdl-layout">
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect accordion">背景設定</button>
+					<div class="closed">
+						<table>
+							<tr>
+
+								<td>
+									<input id="backgroundR" class="mdl-slider mdl-js-slider inputBackGroundColor" type="range" min="0" max="255"
+									 value="100" tabindex="0">
+								</td>
+								<td>
+									R:<span id="backgroundRText">100</span>
+								</td>
+							</tr>
+							<tr>
+
+								<td>
+									<input id="backgroundG" class="mdl-slider mdl-js-slider inputBackGroundColor" type="range" min="0" max="255"
+									 value="100" tabindex="0">
+								</td>
+								<td>
+									G:<span id="backgroundGText">100</span>
+								</td>
+							</tr>
+							<tr>
+
+								<td>
+									<input id="backgroundB" class="mdl-slider mdl-js-slider inputBackGroundColor" type="range" min="0" max="255"
+									 value="100" tabindex="0">
+								</td>
+								<td>
+									B:<span id="backgroundBText">100</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+				<!-- アバター設定 -->
+				<li class="mdl-layout">
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect accordion">アバター設定 </button>
+					<div class="closed">
+						<table>
+							<tr>
+								<td class="thresholdItem">
+									大きさ
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider" id="avatarScale" type="range" min="-10" max="10" value="0">
+								</td>
+								<td>
+									:<span id="avatarScaleValue">1</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="thresholdItem">
+									頭の角度
+
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider headOffset" data-key="x" type="range" min="-45" max="45" value="0">
+								</td>
+								<td>
+									x:<span id="headOffset-x">0</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+				</li>
+				<!-- 検出設定 -->
+				<li class="mdl-layout">
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect accordion">検出設定</button>
+					<div class="closed">
+						<!-- 右目 -->
+						<table>
+							<tr>
+								<td class="thresholdItem">
+									右目
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider offThreshold" data-key="blink_r" type="range" min="0" max="100" value="0">
+								</td>
+								<td>
+									OFF:<span id="offThreshold-blink_r">0.00</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider onThreshold" data-key="blink_r" type="range" min="0" max="100" value="100">
+								</td>
+								<td>
+									ON:<span id="onThreshold-blink_r">1.00</span>
+								</td>
+							</tr>
+						</table>
+						<!-- 左目 -->
+						<table>
+							<tr>
+								<td class="thresholdItem">
+									左目
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider offThreshold" data-key="blink_l" type="range" min="0" max="100" value="0">
+								</td>
+								<td>
+									OFF:<span id="offThreshold-blink_l">0.00</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider onThreshold" data-key="blink_l" type="range" min="0" max="100" value="100">
+								</td>
+								<td>
+									ON:<span id="onThreshold-blink_l">1.00</span>
+								</td>
+							</tr>
+						</table>
+						<!-- 口（あ） -->
+						<table>
+							<tr>
+								<td class="thresholdItem">
+									口（あ）
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider offThreshold" data-key="a" type="range" min="0" max="100" value="0">
+								</td>
+								<td>
+									OFF:<span id="offThreshold-a">0.00</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider onThreshold" data-key="a" type="range" min="0" max="100" value="100">
+								</td>
+								<td>
+									ON:<span id="onThreshold-a">1.00</span>
+								</td>
+							</tr>
+						</table>
+						<!-- 口（い） -->
+						<table>
+							<tr>
+								<td class="thresholdItem">
+									口（い）
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider offThreshold" data-key="i" type="range" min="0" max="100" value="0">
+								</td>
+								<td>
+									OFF:<span id="offThreshold-i">0.00</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider onThreshold" data-key="i" type="range" min="0" max="100" value="100">
+								</td>
+								<td>
+									ON:<span id="onThreshold-i">1.00</span>
+								</td>
+							</tr>
+						</table>
+						<!-- 口（う）-->
+						<table>
+							<tr>
+								<td class="thresholdItem">
+									口（う）
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider offThreshold" data-key="u" type="range" min="0" max="100" value="0">
+								</td>
+								<td>
+									OFF:<span id="offThreshold-u">0.00</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider onThreshold" data-key="u" type="range" min="0" max="100" value="100">
+								</td>
+								<td>
+									ON:<span id="onThreshold-u">1.00</span>
+								</td>
+							</tr>
+						</table>
+						<!-- 口（お）-->
+						<table>
+							<tr>
+								<td class="thresholdItem">
+									口（お）
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider offThreshold" data-key="o" type="range" min="0" max="100" value="0">
+								</td>
+								<td>
+									OFF:<span id="offThreshold-blink_o">0.00</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider onThreshold" data-key="o" type="range" min="0" max="100" value="100">
+								</td>
+								<td>
+									ON:<span id="onThreshold-o">1.00</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+				</li>
+				<!-- クレジット -->
+				<li class="mdl-layout">
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect accordion">クレジット</button>
+					<table>
+						<tr>
+							<td>
+								<nav class="mdl-navigation">
+									<a class="mdl-navigation__link" href="https://twitter.com/ke4563">制作者Twitter<br>＠ke4563</a>
+									<a class="mdl-navigation__link" href="https://jeeliz.com/" target="_blank" rel="noopener">
+										<img src="assets/img/LOGO_JEELIZ_BLUE.png" style="height: 25px" alt="">
+									</a>
+								</nav>
+							</td>
+							<td>
+								<span id="subTitleSize"></span>
+							</td>
+						</tr>
+
+					</table>
+				</li>
+			</ul>
+		</div>
+		<main class="mdl-layout__content" style="background-color:rgb(100,100,100)">
+			<div id="dropbox">
+
+				<div class="mdl-card mdl-shadow--4dp" id="uploadCard">
+					<div class="mdl-card__title">
+						<h2 class="mdl-card__title-text">Welcome !</h2>
+					</div>
+					<div class="mdl-card__supporting-text">
+						VRMファイルをドラッグ＆ドロップ
+					</div>
+
+					<div class="mdl-card__supporting-text">
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
+							またはファイルを選択
+							<div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+								<i class="material-icons">attach_file</i><input type="file" id="uploadBtn">
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<canvas id="threeCanvas" style="z-index: 1;position: absolute;"></canvas>
+
+		</main>
+	</div>
+	<div class="mdl-card mdl-shadow--4dp mdl-list" id="avatarData">
+		<div class="mdl-card__title">
+			<h2 class="mdl-card__title-text" id="avatarName">Welcome !</h2>
+		</div>
+		<div class="mdl-card__supporting-text" id="avatarMetaData">
+			<div>
+
+				<table id="avatarMetaTable"></table>
+			</div>
+		</div>
+		<div class="mdl-card__actions mdl-card--border">
+			<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="acceptButton">
+				同意する
+			</a>
+		</div>
+		<div class="mdl-card__menu">
+			<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="licenseHelp">
+				<i class="material-icons">
+					help</i>
+			</button>
+		</div>
+	</div>
+
+	<div id="debugWindow">
+		<div>Debug Message Window</div>
+		<div>Face Data</div>
+		<div id="faceData"></div>
+	</div>
+	<div class="mdl-spinner mdl-js-spinner" id="loadSpinner"></div>
+
+	<!-- JeelizのWebカメラ画像を表示するキャンバス、必須？ -->
+	<canvas class='jeefacetransferCanvas' id='jeefacetransferCanvas'></canvas>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="lib/three.min.js"></script>
+	<script src="lib/OrbitControls.js"></script>
+	<script src="lib/GLTFLoader.js"></script>
+	<script src="lib/VRMLoader.js"></script>
+	<script src="lib/WebGL.js"></script>
+	<script src="lib/stats.min.js"></script>
+	<script src="lib/jeeliz/jeelizFaceTransfer.js"></script>
+
+	<script src="js/WebVRMHelper.js"></script>
+	<script src="js/vauta.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
+
+</html>
