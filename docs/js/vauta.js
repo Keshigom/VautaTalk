@@ -1,8 +1,7 @@
 
 const TargetCanvas = "threeCanvas";
-const threeCanvasHeight = 210;
-const threeCanvasWidth = 280;
-
+const threeCanvasHeight = 210 * 4;
+const threeCanvasWidth = 280 * 4;
 if (WEBGL.isWebGLAvailable() === false) {
 
     document.body.appendChild(WEBGL.getWebGLErrorMessage());
@@ -56,6 +55,9 @@ var VAUTA = VAUTA || {};
         scene.add(light);
 
         initRenderer(canvas);
+
+        document.getElementById(TargetCanvas).style.height = 210 + 'px';
+        document.getElementById(TargetCanvas).style.width = 280 + 'px';
         console.log("scene Ready")
     }
 
@@ -66,7 +68,7 @@ var VAUTA = VAUTA || {};
             canvas: document.getElementById(TargetCanvas)
         });
         //高解像度なディスプレイの場合高負荷
-        //renderer.setPixelRatio(window.devicePixelRatio);
+        // renderer.setPixelRatio(window.devicePixelRatio);
         //ピクセル比を1:1に
         renderer.setPixelRatio(1);
         //renderer.setSize(window.innerWidth, window.innerHeight);
