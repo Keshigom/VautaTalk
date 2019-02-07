@@ -1,4 +1,5 @@
 /* eslint-disable require-jsdoc */
+var STM;
 $(function () {
   // Peer object
   const peer = new Peer({
@@ -100,8 +101,8 @@ $(function () {
     navigator.mediaDevices.getUserMedia(constraints).then(stream => {
       $('#my-video').get(0).srcObject = stream;
       // CHENGED
-      // localStream = stream;
-      localStream = threeCanvas.captureStream($('#FrameRate').val());
+      localStream = new MediaStream([threeCanvas.captureStream($('#FrameRate').val()).getVideoTracks()[0], stream.getAudioTracks()[0]]);
+      //localStream = threeCanvas.captureStream($('#FrameRate').val());
       if (existingCall) {
         // existingCall.replaceStream(stream);
         existingCall.replaceStream(localStream);
