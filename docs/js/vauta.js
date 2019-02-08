@@ -12,7 +12,7 @@ var VAUTA = VAUTA || {};
 
     //ファイルを読み込む
     //TODO:複数ファイルに対応する(テクスチャなど)
-    VAUTA.handleFiles = (filesObj) => {
+    VAUTA.handleFiles = async (filesObj) => {
         document.getElementById("loadSpinner").classList.add("is-active");
         dropbox.style.display = "none";
         console.time("load Avatar");
@@ -30,11 +30,9 @@ var VAUTA = VAUTA || {};
         VAUTA.update();
     }
 
-    let isAvatarReady = false;
     //モデル読み込み
     VAUTA.loadModel = (modelURL) => {
-        VAUTA.avatar = new WebVRM(modelURL, scene);
-        isAvatarReady = true;
+        VAUTA.avatar = new WebVRM(modelURL, scene, console.log("test"));
     }
 
     //Three.jsの初期化
@@ -107,7 +105,6 @@ var VAUTA = VAUTA || {};
                 console.log("Jeeliz is Ready");
                 if (!isJeelizReady) {
                     //initPose();
-                    VAUTA.dispMetaData();
                 };
                 VAUTA.errorFlag = false;
                 isJeelizReady = true;
@@ -119,19 +116,19 @@ var VAUTA = VAUTA || {};
         });
     }
 
-    //Tポーズから腕を下ろさせる
-    // const initPose = () => {
-    //     const armRotation = Math.PI * (-70 / 180);
+    // Tポーズから腕を下ろさせる
+    const initPose = () => {
+        const armRotation = Math.PI * (-70 / 180);
 
-    //     VAUTA.avatar.setBoneRotation("leftUpperArm",
-    //         {
-    //             z: -armRotation
-    //         });
-    //     VAUTA.avatar.setBoneRotation("rightUpperArm",
-    //         {
-    //             z: armRotation
-    //         });
-    // }
+        VAUTA.avatar.setBoneRotation("leftUpperArm",
+            {
+                z: -armRotation
+            });
+        VAUTA.avatar.setBoneRotation("rightUpperArm",
+            {
+                z: armRotation
+            });
+    }
 
 
     // ウィンドウサイズ変更
@@ -417,21 +414,32 @@ var VAUTA = VAUTA || {};
     }
 
     let clock = new THREE.Clock();
+    let firstStep = true;
     // 描画更新処理
     VAUTA.update = () => {
         requestAnimationFrame(VAUTA.update);
-
-        if (isAvatarReady && isJeelizReady) {
-            //描画間隔にあわせて、検出間隔を変更する
-            let delta = clock.getDelta();
-            JEEFACETRANSFERAPI.set_animateDelay(delta);
-
-            VAUTA.UpdateExpression();
-            if (VAUTA.getSetting("isDebug")) {
-                let debugFaceData = document.getElementById("faceData");
-                debugFaceData.innerHTML = debugMessage();
+        if (VAUTA.avatar && VAUTA.avatar.isReady) {
+            if (firstStep) {
+                VAUTA.dispMetaData();
+                initPose();
+                firstStep = false;
             }
+
+            if (isJeelizReady) {
+                //描画間隔にあわせて、検出間隔を変更する
+                let delta = clock.getDelta();
+                JEEFACETRANSFERAPI.set_animateDelay(delta);
+
+                VAUTA.UpdateExpression();
+                if (VAUTA.getSetting("isDebug")) {
+                    let debugFaceData = document.getElementById("faceData");
+                    debugFaceData.innerHTML = debugMessage();
+                }
+            }
+
         }
+
+
 
         renderer.render(scene, camera);
         stats.update();
@@ -475,7 +483,7 @@ var VAUTA = VAUTA || {};
                 //アバター利用が作者のみの場合、フェイストラックを切る
                 if (VAUTA.metaData[key] == "OnlyAuthor") {
                     alert("このアバターを操作することはアバター作者にのみ許されます");
-                    isAvatarReady = false;
+                    VAUTA.avatar.isReady = false;
                     // document.getElementById("acceptButton").style.display = "none";
                 }
                 addLicensItem(table, transferLicense(key), transferLicense(VAUTA.metaData[key]));
