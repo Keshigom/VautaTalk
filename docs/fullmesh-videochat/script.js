@@ -96,6 +96,7 @@ $(function () {
     };
     navigator.mediaDevices.getUserMedia(constraints).then(stream => {
       $('#my-video').get(0).srcObject = stream;
+
       //localStream = stream;
       localStream = new MediaStream([threeCanvas.captureStream($('#FrameRate').val()).getVideoTracks()[0], stream.getAudioTracks()[0]]);
 
