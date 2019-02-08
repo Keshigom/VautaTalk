@@ -1,7 +1,7 @@
 
 const TargetCanvas = "threeCanvas";
 const threeCanvasHeight = 1024;
-const threeCanvasWidth = 1024;
+const threeCanvasWidth = 1024 / 2;
 if (WEBGL.isWebGLAvailable() === false) {
 
     document.body.appendChild(WEBGL.getWebGLErrorMessage());
@@ -54,8 +54,12 @@ var VAUTA = VAUTA || {};
 
         initRenderer(canvas);
 
-        document.getElementById(TargetCanvas).style.height = threeCanvasHeight / 4 + 'px';
-        document.getElementById(TargetCanvas).style.width = threeCanvasWidth / 4 + 'px';
+        //    document.getElementById(TargetCanvas).style.height = threeCanvasHeight / 4 + 'px';
+        document.getElementById(TargetCanvas).style.height = 'auto';
+
+        // document.getElementById(TargetCanvas).style.width = threeCanvasWidth / 4 + 'px';
+        document.getElementById(TargetCanvas).style.width = '100%';
+
         console.log("scene Ready")
     }
 

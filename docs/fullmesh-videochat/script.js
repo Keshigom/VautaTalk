@@ -95,7 +95,7 @@ $(function () {
       video: { deviceId: videoSource ? { exact: videoSource } : undefined },
     };
     navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-      $('#my-video').get(0).srcObject = stream;
+      // $('#my-video').get(0).srcObject = stream;
 
       //localStream = stream;
       localStream = new MediaStream([threeCanvas.captureStream($('#FrameRate').val()).getVideoTracks()[0], stream.getAudioTracks()[0]]);
@@ -126,11 +126,12 @@ $(function () {
       const peerId = stream.peerId;
       const id = 'video_' + peerId + '_' + stream.id.replace('{', '').replace('}', '');
 
-      $('#their-videos').append($(
+      $('#videos').append($(
+        `<div class='mdl-cell mdl-cell--3-col mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone'>` +
         '<div class="video_' + peerId + '" id="' + id + '">' +
-        '<label>' + stream.peerId + ':' + stream.id + '</label>' +
+        // '<label>' + stream.peerId + ':' + stream.id + '</label>' +
         '<video class="remoteVideos" autoplay playsinline>' +
-        '</div>'));
+        '</div></div>'));
       const el = $('#' + id).find('video').get(0);
       el.srcObject = stream;
       el.play();

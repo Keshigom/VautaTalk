@@ -40,8 +40,8 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 
 #my-video {
   margin-top: 15px;
-  width: 280px;
-  height: auto;
+  width: 256px;
+  height: 256px;
   background-color: #eee;
 }
 
