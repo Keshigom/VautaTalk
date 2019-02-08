@@ -24,17 +24,52 @@
 <body>
 	<div class="demo-layout-transparent mdl-layout mdl-js-layout">
 
-
 		<div class="mdl-layout__drawer">
 
 			<span class="mdl-layout-title">
 				<img src="assets/img/logo.png" style="height: 50px" alt="">
 			</span>
 			<ul class="demo-list-item mdl-list">
+				<!-- VC -->
+				<li class="mdl-layout" id="skyway">
+					<!-- Get local audio/video stream -->
+					<div id="step1">
+						<p>Please click `allow` on the top of the screen so we can access your webcam and microphone for calls.</p>
+						<div id="step1-error">
+							<p>Failed to access the webcam and microphone. Make sure to run this demo on an http server and click allow when
+								asked for permission by the browser.</p>
+							<a href="#" class="pure-button pure-button-error" id="step1-retry">Try again</a>
+						</div>
+					</div>
+					<span> Your id: <span id="my-id">...</span></span>
+					<div id="step2">
+						<form id="make-call" class="pure-form">
+							<span>
+								<input type="text" placeholder="Join room..." id="join-room">
+								<button class="pure-button pure-button-success" type="submit" id="join-submit">Join</button>
+							</span>
+						</form>
+						<!-- <p><strong>Warning:</strong> You may connect with people you don't know if you both use the same room name.</p> -->
+						<small><strong>注意：</strong>同じルーム名を使用した場合、<br>知らない人と接続する可能性があります。</small>
+					</div>
+					<!-- Call in progress -->
+					<div id="step3">
+						<p>ルーム名:<span id="room-id">...</span></p>
+						<p><a href="#" class="pure-button pure-button-error" id="end-call">End call</a></p>
+					</div>
+				</li>
 				<!-- 基本設定 -->
 				<li class="mdl-layout">
 					<button class="mdl-button mdl-js-button mdl-js-ripple-effect accordion"><span class="settingName">基本設定</span></button>
 					<div class="closed" style="margin-left: 20px">
+
+						<div class="select">
+							<label for="audioSource">Audio input source: </label><select id="audioSource"></select>
+						</div>
+
+						<div class="select">
+							<label for="videoSource">Video source: </label><select id="videoSource"></select>
+						</div>
 						<label class="mdl-checkbox mdl-js-checkbox" for="isMirror">
 							<input type="checkbox" id="isMirror" class="mdl-checkbox__input toggleSetting" value=true checked>
 							<span class="mdl-checkbox__label">ミラーモード</span>
@@ -297,6 +332,7 @@
 				</li>
 			</ul>
 		</div>
+
 		<main class="mdl-layout__content" style="background-color:rgb(100,100,100)">
 			<div id="dropbox">
 
@@ -321,59 +357,22 @@
 			</div>
 			<!-- <canvas id="threeCanvas" style="z-index: 1;position: absolute;"></canvas> -->
 
-			<div class="pure-g">
+			<!-- <div class="pure-g"> -->
 
-				<!-- Video area -->
-				<div class="pure-u-2-3" id="video-container">
-					<div id="their-videos"></div>
-					<video id="my-video" muted="true" autoplay playsinline></video>
-					<canvas id="threeCanvas"></canvas>
-				</div>
+			<!-- Video area -->
+			<!-- <div class="pure-u-2-3" id="video-container"> -->
+			<div id="their-videos"></div>
+			<video id="my-video" muted="true" autoplay playsinline></video>
+			<canvas id="threeCanvas"></canvas>
 
-				<!-- Steps -->
-				<div class="pure-u-1-3">
-					<h2>SkyWay Video Chat</h2>
+			<!-- </div> -->
 
-					<div class="select">
-						<label for="audioSource">Audio input source: </label><select id="audioSource"></select>
-					</div>
-
-					<div class="select">
-						<label for="videoSource">Video source: </label><select id="videoSource"></select>
-					</div>
-
-					<!-- Get local audio/video stream -->
-					<div id="step1">
-						<p>Please click `allow` on the top of the screen so we can access your webcam and microphone for calls.</p>
-						<div id="step1-error">
-							<p>Failed to access the webcam and microphone. Make sure to run this demo on an http server and click allow when
-								asked for permission by the browser.</p>
-							<a href="#" class="pure-button pure-button-error" id="step1-retry">Try again</a>
-						</div>
-					</div>
-
-					<p>Your id: <span id="my-id">...</span></p>
-					<!-- Make calls to others -->
-					<div id="step2">
-						<h3>Make a call</h3>
-						<form id="make-call" class="pure-form">
-							<input type="text" placeholder="Join room..." id="join-room">
-							<button class="pure-button pure-button-success" type="submit">Join</button>
-						</form>
-						<p><strong>Warning:</strong> You may connect with people you don't know if you both use the same room name.</p>
-						<p><strong>注意：</strong>同じルーム名を使用した場合、知らない人と接続する可能性があります。</p>
-					</div>
-
-					<!-- Call in progress -->
-					<div id="step3">
-						<p>Currently in room <span id="room-id">...</span></p>
-						<p><a href="#" class="pure-button pure-button-error" id="end-call">End call</a></p>
-					</div>
-				</div>
-			</div>
+			<!-- </div> -->
 
 		</main>
 	</div>
+
+
 	<div class="mdl-card mdl-shadow--4dp mdl-list" id="avatarData">
 		<div class="mdl-card__title">
 			<h2 class="mdl-card__title-text" id="avatarName">Welcome !</h2>

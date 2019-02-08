@@ -1,7 +1,7 @@
 
 const TargetCanvas = "threeCanvas";
-const threeCanvasHeight = 210 * 4;
-const threeCanvasWidth = 280 * 4;
+const threeCanvasHeight = 1024;
+const threeCanvasWidth = 1024;
 if (WEBGL.isWebGLAvailable() === false) {
 
     document.body.appendChild(WEBGL.getWebGLErrorMessage());
@@ -54,15 +54,15 @@ var VAUTA = VAUTA || {};
 
         initRenderer(canvas);
 
-        document.getElementById(TargetCanvas).style.height = 210 + 'px';
-        document.getElementById(TargetCanvas).style.width = 280 + 'px';
+        document.getElementById(TargetCanvas).style.height = threeCanvasHeight / 4 + 'px';
+        document.getElementById(TargetCanvas).style.width = threeCanvasWidth / 4 + 'px';
         console.log("scene Ready")
     }
 
     const initRenderer = (canvas) => {
         renderer = new THREE.WebGLRenderer({
             antialias: false,                                   //負荷軽減目的（初期化後の変更は不可）
-            alpha: true,                                        //背景色は親要素に依存
+            alpha: false,                                        //背景色は親要素に依存
             canvas: document.getElementById(TargetCanvas)
         });
         //高解像度なディスプレイの場合高負荷
