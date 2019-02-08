@@ -106,7 +106,7 @@ var VAUTA = VAUTA || {};
                 console.timeEnd("init jeeliz");
                 console.log("Jeeliz is Ready");
                 if (!isJeelizReady) {
-                    initPose();
+                    //initPose();
                     VAUTA.dispMetaData();
                 };
                 VAUTA.errorFlag = false;
@@ -120,18 +120,18 @@ var VAUTA = VAUTA || {};
     }
 
     //Tポーズから腕を下ろさせる
-    const initPose = () => {
-        const armRotation = Math.PI * (-70 / 180);
+    // const initPose = () => {
+    //     const armRotation = Math.PI * (-70 / 180);
 
-        VAUTA.avatar.setBoneRotation("leftUpperArm",
-            {
-                z: -armRotation
-            });
-        VAUTA.avatar.setBoneRotation("rightUpperArm",
-            {
-                z: armRotation
-            });
-    }
+    //     VAUTA.avatar.setBoneRotation("leftUpperArm",
+    //         {
+    //             z: -armRotation
+    //         });
+    //     VAUTA.avatar.setBoneRotation("rightUpperArm",
+    //         {
+    //             z: armRotation
+    //         });
+    // }
 
 
     // ウィンドウサイズ変更

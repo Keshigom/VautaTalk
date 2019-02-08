@@ -12,6 +12,17 @@ class WebVRM {
         targetScene,
         callBackReady = () => {
             console.log("Avatar is Ready")
+
+            //  Tポーズから腕を下ろさせる
+            const armRotation = Math.PI * (-70 / 180);
+            this.setBoneRotation("leftUpperArm",
+                {
+                    z: -armRotation
+                });
+            this.setBoneRotation("rightUpperArm",
+                {
+                    z: armRotation
+                });
         }
     ) {
         this._vrm;
