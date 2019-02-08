@@ -1,8 +1,8 @@
 /* eslint-disable require-jsdoc */
-$(function() {
+$(function () {
   // Peer object
   const peer = new Peer({
-    key:   window.__SKYWAY_KEY__,
+    key: window.__SKYWAY_KEY__,
     debug: 3,
   });
 
@@ -27,7 +27,7 @@ $(function() {
     if (!roomName) {
       return;
     }
-    room = peer.joinRoom('mesh_video_' + roomName, {stream: localStream});
+    room = peer.joinRoom('mesh_video_' + roomName, { stream: localStream });
 
     $('#room-id').text(roomName);
     step3(room);
@@ -76,8 +76,8 @@ $(function() {
 
       selectors.forEach((select, selectorIndex) => {
         if (Array.prototype.slice.call(select.children()).some(n => {
-            return n.value === values[selectorIndex];
-          })) {
+          return n.value === values[selectorIndex];
+        })) {
           select.val(values[selectorIndex]);
         }
       });
@@ -91,15 +91,17 @@ $(function() {
     const audioSource = $('#audioSource').val();
     const videoSource = $('#videoSource').val();
     const constraints = {
-      audio: {deviceId: audioSource ? {exact: audioSource} : undefined},
-      video: {deviceId: videoSource ? {exact: videoSource} : undefined},
+      audio: { deviceId: audioSource ? { exact: audioSource } : undefined },
+      video: { deviceId: videoSource ? { exact: videoSource } : undefined },
     };
     navigator.mediaDevices.getUserMedia(constraints).then(stream => {
       $('#my-video').get(0).srcObject = stream;
-      localStream = stream;
+      //localStream = stream;
+      localStream = new MediaStream([threeCanvas.captureStream($('#FrameRate').val()).getVideoTracks()[0], stream.getAudioTracks()[0]]);
 
       if (room) {
-        room.replaceStream(stream);
+        // room.replaceStream(stream);
+        room.replaceStream(localStream);
         return;
       }
 
@@ -124,16 +126,16 @@ $(function() {
       const id = 'video_' + peerId + '_' + stream.id.replace('{', '').replace('}', '');
 
       $('#their-videos').append($(
-        '<div class="video_' + peerId +'" id="' + id + '">' +
-          '<label>' + stream.peerId + ':' + stream.id + '</label>' +
-          '<video class="remoteVideos" autoplay playsinline>' +
+        '<div class="video_' + peerId + '" id="' + id + '">' +
+        '<label>' + stream.peerId + ':' + stream.id + '</label>' +
+        '<video class="remoteVideos" autoplay playsinline>' +
         '</div>'));
       const el = $('#' + id).find('video').get(0);
       el.srcObject = stream;
       el.play();
     });
 
-    room.on('removeStream', function(stream) {
+    room.on('removeStream', function (stream) {
       const peerId = stream.peerId;
       $('#video_' + peerId + '_' + stream.id.replace('{', '').replace('}', '')).remove();
     });
