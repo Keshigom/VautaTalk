@@ -43,6 +43,8 @@ jQuery(function () {
         const b = ($(`#backgroundB`).val() * 1).toString(16).padStart(2, `0`);
         $(id).html(per.toString().padStart(3, `0`));
         $(`main`).css(`background-color`, `#` + r + g + b);
+        VAUTA.setBackground('0x' + r + g + b);
+
     });
 
     //無変化の閾値

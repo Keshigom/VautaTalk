@@ -168,6 +168,14 @@ body {
       .remoteVideos{
           max-height: 100%;
       }
+
+      #threeCanvas{
+          background-color:white;
+        }
+      video{
+           filter: saturate(150%);
+        } 
+
       /* .avatar-window{
           position: relative;
           width: 50%;
