@@ -91,7 +91,9 @@ body {
       .mdl-textfield--file .mdl-button--file {
         right: 0;
       }
-    
+      .setting-list-item{
+        display: inline-grid;
+      }
     
       #uploadCard{
         top: 0;
@@ -173,9 +175,13 @@ body {
           background-color:white;
         }
       video{
-           filter: saturate(150%);
+           filter: saturate(100%) 
+           /* contrast(110%); */
         } 
 
+        #make-call{
+          width:220px
+        }
       /* .avatar-window{
           position: relative;
           width: 50%;
@@ -194,3 +200,17 @@ body {
         max-width: 100%;
         max-height: 100%;
       } */
+  #testCanvas{
+    width: 100px;
+    height: 100px;
+    background-color:rgb(0, 255, 0);
+  }
+  #testVideo{
+    width: 100px;
+    height: 100px;
+  }
+
+  #backgroundSelector{
+    margin-left: 20px;
+    padding: 0 50px; 
+  }

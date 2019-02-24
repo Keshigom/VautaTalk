@@ -29,14 +29,16 @@
 			<span class="mdl-layout-title">
 				<img src="assets/img/logo.png" style="height: 50px" alt="">
 			</span>
-			<ul class="demo-list-item mdl-list">
+			<ul class="setting-list-item mdl-list">
 				<!-- VC -->
 				<li class="mdl-layout" id="skyway">
 					<!-- Get local audio/video stream -->
 					<div id="step1">
-						<p>Please click `allow` on the top of the screen so we can access your webcam and microphone for calls.</p>
+						<p>Please click `allow` on the top of the screen so we can access your webcam and microphone for
+							calls.</p>
 						<div id="step1-error">
-							<p>Failed to access the webcam and microphone. Make sure to run this demo on an http server and click allow when
+							<p>Failed to access the webcam and microphone. Make sure to run this demo on an http server
+								and click allow when
 								asked for permission by the browser.</p>
 							<a href="#" class="pure-button pure-button-error" id="step1-retry">Try again</a>
 						</div>
@@ -44,10 +46,8 @@
 					<span> Your id: <span id="my-id">...</span></span>
 					<div id="step2">
 						<form id="make-call" class="pure-form">
-							<span>
-								<input type="text" placeholder="Join room..." id="join-room">
-								<button class="pure-button pure-button-success" type="submit" id="join-submit">Join</button>
-							</span>
+							<input type="text" placeholder="Join room..." id="join-room">
+							<button class="pure-button pure-button-success" type="submit" id="join-submit">Join</button>
 						</form>
 						<!-- <p><strong>Warning:</strong> You may connect with people you don't know if you both use the same room name.</p> -->
 						<small><strong>注意：</strong>同じルーム名を使用した場合、<br>知らない人と接続する可能性があります。</small>
@@ -60,7 +60,8 @@
 				</li>
 				<!-- 基本設定 -->
 				<li class="mdl-layout">
-					<button class="mdl-button mdl-js-button mdl-js-ripple-effect accordion"><span class="settingName">基本設定</span></button>
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect accordion"><span
+							class="settingName">基本設定</span></button>
 					<div class="closed" style="margin-left: 20px">
 
 						<div class="select">
@@ -71,7 +72,8 @@
 							<label for="videoSource">Video source: </label><select id="videoSource"></select>
 						</div>
 						<label class="mdl-checkbox mdl-js-checkbox" for="isMirror">
-							<input type="checkbox" id="isMirror" class="mdl-checkbox__input toggleSetting" value=true checked>
+							<input type="checkbox" id="isMirror" class="mdl-checkbox__input toggleSetting" value=true
+								checked>
 							<span class="mdl-checkbox__label">ミラーモード</span>
 						</label>
 						<!-- アンチエイリアスは宣言時のみ変更可能 -->
@@ -87,39 +89,26 @@
 				</li>
 				<!-- 背景設定 -->
 				<li class="mdl-layout">
-					<button class="mdl-button mdl-js-button mdl-js-ripple-effect accordion">背景設定</button>
+					<button class="mdl-button mdl-js-button mdl-js-ripple-effect accordion"> 背景設定</button>
 					<div class="closed">
+
 						<table>
 							<tr>
-
 								<td>
-									<input id="backgroundR" class="mdl-slider mdl-js-slider inputBackGroundColor" type="range" min="0" max="255"
-									 value="100" tabindex="0">
-								</td>
-								<td>
-									R:<span id="backgroundRText">100</span>
-								</td>
-							</tr>
-							<tr>
-
-								<td>
-									<input id="backgroundG" class="mdl-slider mdl-js-slider inputBackGroundColor" type="range" min="0" max="255"
-									 value="100" tabindex="0">
-								</td>
-								<td>
-									G:<span id="backgroundGText">100</span>
+									<select id="backgroundSelector">
+										<option value="gray"><span>&#9632</span>灰色</option>
+										<option value="red" style="color:red"><span>&#9632</span>赤</option>
+										<option value="green" style="color:green"><span>&#9632</span>緑</option>
+										<option value="blue" style="color:blue"><span>&#9632</span>青</option>
+										<option value="pink" style="color:magenta"><span>&#9632</span>ピンク</option>
+										<option value="sky" style="color:skyblue"><span>&#9632</span>水色</option>
+										<option value="yellow" style="color:yellow"><span>&#9632</span>黄色</option>
+										<option value="black" style="color:black"><span>&#9632</span>黒色</option>
+										<option value="white"><span>&#9632</span>白</option>
+									</select>
 								</td>
 							</tr>
-							<tr>
 
-								<td>
-									<input id="backgroundB" class="mdl-slider mdl-js-slider inputBackGroundColor" type="range" min="0" max="255"
-									 value="100" tabindex="0">
-								</td>
-								<td>
-									B:<span id="backgroundBText">100</span>
-								</td>
-							</tr>
 						</table>
 					</div>
 				</li>
@@ -135,7 +124,8 @@
 							</tr>
 							<tr>
 								<td>
-									<input class="mdl-slider mdl-js-slider" id="avatarScale" type="range" min="-10" max="10" value="0">
+									<input class="mdl-slider mdl-js-slider" id="avatarScale" type="range" min="-10"
+										max="10" value="0">
 								</td>
 								<td>
 									:<span id="avatarScaleValue">1</span>
@@ -149,7 +139,8 @@
 							</tr>
 							<tr>
 								<td>
-									<input class="mdl-slider mdl-js-slider headOffset" data-key="x" type="range" min="-45" max="45" value="0">
+									<input class="mdl-slider mdl-js-slider headOffset" data-key="x" type="range"
+										min="-45" max="45" value="0">
 								</td>
 								<td>
 									x:<span id="headOffset-x">0</span>
@@ -172,7 +163,8 @@
 							</tr>
 							<tr>
 								<td>
-									<input class="mdl-slider mdl-js-slider offThreshold" data-key="blink_r" type="range" min="0" max="100" value="0">
+									<input class="mdl-slider mdl-js-slider offThreshold" data-key="blink_r" type="range"
+										min="0" max="100" value="0">
 								</td>
 								<td>
 									OFF:<span id="offThreshold-blink_r">0.00</span>
@@ -180,7 +172,8 @@
 							</tr>
 							<tr>
 								<td>
-									<input class="mdl-slider mdl-js-slider onThreshold" data-key="blink_r" type="range" min="0" max="100" value="100">
+									<input class="mdl-slider mdl-js-slider onThreshold" data-key="blink_r" type="range"
+										min="0" max="100" value="100">
 								</td>
 								<td>
 									ON:<span id="onThreshold-blink_r">1.00</span>
@@ -196,7 +189,8 @@
 							</tr>
 							<tr>
 								<td>
-									<input class="mdl-slider mdl-js-slider offThreshold" data-key="blink_l" type="range" min="0" max="100" value="0">
+									<input class="mdl-slider mdl-js-slider offThreshold" data-key="blink_l" type="range"
+										min="0" max="100" value="0">
 								</td>
 								<td>
 									OFF:<span id="offThreshold-blink_l">0.00</span>
@@ -204,7 +198,8 @@
 							</tr>
 							<tr>
 								<td>
-									<input class="mdl-slider mdl-js-slider onThreshold" data-key="blink_l" type="range" min="0" max="100" value="100">
+									<input class="mdl-slider mdl-js-slider onThreshold" data-key="blink_l" type="range"
+										min="0" max="100" value="100">
 								</td>
 								<td>
 									ON:<span id="onThreshold-blink_l">1.00</span>
@@ -220,7 +215,8 @@
 							</tr>
 							<tr>
 								<td>
-									<input class="mdl-slider mdl-js-slider offThreshold" data-key="a" type="range" min="0" max="100" value="0">
+									<input class="mdl-slider mdl-js-slider offThreshold" data-key="a" type="range"
+										min="0" max="100" value="0">
 								</td>
 								<td>
 									OFF:<span id="offThreshold-a">0.00</span>
@@ -228,7 +224,8 @@
 							</tr>
 							<tr>
 								<td>
-									<input class="mdl-slider mdl-js-slider onThreshold" data-key="a" type="range" min="0" max="100" value="100">
+									<input class="mdl-slider mdl-js-slider onThreshold" data-key="a" type="range"
+										min="0" max="100" value="100">
 								</td>
 								<td>
 									ON:<span id="onThreshold-a">1.00</span>
@@ -244,7 +241,8 @@
 							</tr>
 							<tr>
 								<td>
-									<input class="mdl-slider mdl-js-slider offThreshold" data-key="i" type="range" min="0" max="100" value="0">
+									<input class="mdl-slider mdl-js-slider offThreshold" data-key="i" type="range"
+										min="0" max="100" value="0">
 								</td>
 								<td>
 									OFF:<span id="offThreshold-i">0.00</span>
@@ -252,7 +250,8 @@
 							</tr>
 							<tr>
 								<td>
-									<input class="mdl-slider mdl-js-slider onThreshold" data-key="i" type="range" min="0" max="100" value="100">
+									<input class="mdl-slider mdl-js-slider onThreshold" data-key="i" type="range"
+										min="0" max="100" value="100">
 								</td>
 								<td>
 									ON:<span id="onThreshold-i">1.00</span>
@@ -268,7 +267,8 @@
 							</tr>
 							<tr>
 								<td>
-									<input class="mdl-slider mdl-js-slider offThreshold" data-key="u" type="range" min="0" max="100" value="0">
+									<input class="mdl-slider mdl-js-slider offThreshold" data-key="u" type="range"
+										min="0" max="100" value="0">
 								</td>
 								<td>
 									OFF:<span id="offThreshold-u">0.00</span>
@@ -276,7 +276,8 @@
 							</tr>
 							<tr>
 								<td>
-									<input class="mdl-slider mdl-js-slider onThreshold" data-key="u" type="range" min="0" max="100" value="100">
+									<input class="mdl-slider mdl-js-slider onThreshold" data-key="u" type="range"
+										min="0" max="100" value="100">
 								</td>
 								<td>
 									ON:<span id="onThreshold-u">1.00</span>
@@ -292,7 +293,8 @@
 							</tr>
 							<tr>
 								<td>
-									<input class="mdl-slider mdl-js-slider offThreshold" data-key="o" type="range" min="0" max="100" value="0">
+									<input class="mdl-slider mdl-js-slider offThreshold" data-key="o" type="range"
+										min="0" max="100" value="0">
 								</td>
 								<td>
 									OFF:<span id="offThreshold-blink_o">0.00</span>
@@ -300,7 +302,8 @@
 							</tr>
 							<tr>
 								<td>
-									<input class="mdl-slider mdl-js-slider onThreshold" data-key="o" type="range" min="0" max="100" value="100">
+									<input class="mdl-slider mdl-js-slider onThreshold" data-key="o" type="range"
+										min="0" max="100" value="100">
 								</td>
 								<td>
 									ON:<span id="onThreshold-o">1.00</span>
@@ -317,8 +320,10 @@
 						<tr>
 							<td>
 								<nav class="mdl-navigation">
-									<a class="mdl-navigation__link" href="https://twitter.com/ke4563">制作者Twitter<br>＠ke4563</a>
-									<a class="mdl-navigation__link" href="https://jeeliz.com/" target="_blank" rel="noopener">
+									<a class="mdl-navigation__link"
+										href="https://twitter.com/ke4563">制作者Twitter<br>＠ke4563</a>
+									<a class="mdl-navigation__link" href="https://jeeliz.com/" target="_blank"
+										rel="noopener">
 										<img src="assets/img/LOGO_JEELIZ_BLUE.png" style="height: 25px" alt="">
 									</a>
 								</nav>
@@ -363,7 +368,8 @@
 			<!-- <div class="pure-u-2-3" id="video-container"> -->
 			<video id="my-video" muted="true" autoplay playsinline></video>
 			<!-- <video id="my-video2" muted="true" autoplay playsinline></video> -->
-
+			<!-- <canvas id="testCanvas"></canvas>
+			<video id="testVideo" muted="true" autoplay playsinline></video> -->
 			<!-- <div id="their-videos"></div> -->
 			<div id="videos" class="mdl-grid">
 				<div class='mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone avatar-window'>

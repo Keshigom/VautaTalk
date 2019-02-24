@@ -85,9 +85,51 @@ var VAUTA = VAUTA || {};
         renderer.shadowMap.autoUpdate = false;
     }
 
+
     VAUTA.setBackground = (color) => {
-        color = parseInt(color, 16);
-        renderer.setClearColor(color);
+        // color = parseInt(color, 16);
+        // renderer.setClearColor(color);
+        switch (color) {
+            case "red":
+                $(`main`).css(`background-color`, `#ff2400`);
+                renderer.setClearColor(0xff0000);
+                break;
+            case "green":
+                $(`main`).css(`background-color`, `#00d800`);
+                renderer.setClearColor(0x00ff00);
+                break;
+            case "blue":
+                $(`main`).css(`background-color`, `#000fff`);
+                renderer.setClearColor(0x0000ff);
+                break;
+
+            case "pink":
+                $(`main`).css(`background-color`, `#ff28ff`);
+                renderer.setClearColor(0xff00ff);
+                break;
+            case "sky":
+                $(`main`).css(`background-color`, `#00e8ff`);
+                renderer.setClearColor(0x00ffff);
+                break;
+            case "yellow":
+                $(`main`).css(`background-color`, `#fff100`);
+                renderer.setClearColor(0xffff00);
+                break;
+
+            case "black":
+                $(`main`).css(`background-color`, `#000000`);
+                renderer.setClearColor(0x000000);
+                break;
+            case "white":
+                $(`main`).css(`background-color`, `#ffffff`);
+                renderer.setClearColor(0xffffff);
+                break;
+
+            default:
+                $(`main`).css(`background-color`, `#656465`);
+                renderer.setClearColor(0x646464);
+                break;
+        }
     }
 
     //FPS表示

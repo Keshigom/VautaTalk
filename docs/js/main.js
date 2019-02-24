@@ -47,6 +47,13 @@ jQuery(function () {
 
     });
 
+    $('#backgroundSelector').on('on change', function () {
+        // $(this).css('color', $(this).find('option:selected').get(0).style.color);
+        console.log($(this).val());
+        VAUTA.setBackground($(this).val());
+
+    });
+
     //無変化の閾値
     $(`.offThreshold`).on(`input change`, function () {
         const inputPersent = $(this).val();

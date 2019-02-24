@@ -99,7 +99,6 @@ $(function () {
 
       //localStream = stream;
       localStream = new MediaStream([threeCanvas.captureStream($('#FrameRate').val()).getVideoTracks()[0], stream.getAudioTracks()[0]]);
-      // $('#my-video').get(0).srcObject = localStream;
       $('#my-video').get(0).srcObject = threeCanvas.captureStream($('#FrameRate').val());
 
       if (room) {
