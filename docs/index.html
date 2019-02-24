@@ -338,7 +338,7 @@
 			</ul>
 		</div>
 
-		<main class="mdl-layout__content" style="background-color:rgb(100,100,100)">
+		<main class="mdl-layout__content " style="background-color:rgb(100,100,100)">
 			<div id="dropbox">
 
 				<div class="mdl-card mdl-shadow--4dp" id="uploadCard">
@@ -366,33 +366,20 @@
 
 			<!-- Video area -->
 			<!-- <div class="pure-u-2-3" id="video-container"> -->
-			<video id="my-video" muted="true" autoplay playsinline></video>
+			<!-- <video class='pep' id="my-video" muted="true" autoplay playsinline></video> -->
 			<!-- <video id="my-video2" muted="true" autoplay playsinline></video> -->
 			<!-- <canvas id="testCanvas"></canvas>
 			<video id="testVideo" muted="true" autoplay playsinline></video> -->
 			<!-- <div id="their-videos"></div> -->
-			<div id="videos" class="mdl-grid">
-				<div class='mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone avatar-window'>
-					<!-- <div class="avatar-area">
-						<canvas class="avatar-canvas" id="threeCanvas"></canvas>
-					</div> -->
-					<canvas class="avatar-canvas" id="threeCanvas"></canvas>
+			<div class="constrain-to-parent" id="userVideoArea">
+				<div class='pep avatarVideoWindow'>
+					<video class='pep avatarVideoWindow' id="my-video" muted="true" autoplay playsinline></video>
 
+					<canvas class="avatarVideoWindow" id="threeCanvas"></canvas>
 				</div>
-				<!-- <div class='mdl-cell mdl-cell--3-col mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone'>
-					<canvas class="avatar-canvas" id="threeCanvas"></canvas>
-				</div> -->
-				<!-- <div class='mdl-cell mdl-cell--3-col mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone' style="background-color:black">
-
-				</div>
-				<div class='mdl-cell mdl-cell--3-col mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone' style="background-color:black">
-				</div>
-				<div class='mdl-cell mdl-cell--3-col mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone' style="background-color:black">
-				</div> -->
 			</div>
-			<!-- </div> -->
 
-			<!-- </div> -->
+
 
 		</main>
 	</div>
@@ -439,6 +426,7 @@
 	<script src="lib/WebGL.js"></script>
 	<script src="lib/stats.min.js"></script>
 	<script src="lib/jeeliz/jeelizFaceTransfer.js"></script>
+	<script src="lib/jquery.pep.js"></script>
 
 	<script src="js/WebVRMHelper.js"></script>
 	<script src="js/vauta.js"></script>

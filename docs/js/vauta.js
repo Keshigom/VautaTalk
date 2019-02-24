@@ -51,18 +51,11 @@ var VAUTA = VAUTA || {};
         const light = new THREE.HemisphereLight(0xbbbbff, 0x444422);
         light.position.set(0, 1, 0);
         scene.add(light);
-        //箱を作成
-        const geometry = new THREE.BoxGeometry(1, 1, 1);
-        const material = new THREE.MeshBasicMaterial({ color: 0x00FF00 });
-        const box = new THREE.Mesh(geometry, material);
-        scene.add(box);
+
         initRenderer(canvas);
 
-        //    document.getElementById(TargetCanvas).style.height = threeCanvasHeight / 4 + 'px';
         document.getElementById(TargetCanvas).style.height = 'auto';
-
-        // document.getElementById(TargetCanvas).style.width = threeCanvasWidth / 4 + 'px';
-        document.getElementById(TargetCanvas).style.width = '100%';
+        document.getElementById(TargetCanvas).style.width = 'calc(100% - 1px)';
 
         console.log("scene Ready")
     }

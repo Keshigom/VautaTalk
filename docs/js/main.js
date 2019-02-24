@@ -1,5 +1,12 @@
 
 jQuery(function () {
+    //pep ウィンドウ移動可
+    // $('#pep').pep();
+
+    $('.constrain-to-parent .pep').pep({
+        useCSSTranslation: false,
+        constrainTo: 'parent'
+    });
 
     //ファイル読み込み　(ボタン)
     $(`#uploadBtn`).on(`on change`, function () {

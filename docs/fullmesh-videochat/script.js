@@ -115,7 +115,7 @@ $(function () {
   }
 
   function step2() {
-    $('#their-videos').empty();
+    $('.theirVideo').remove();
     $('#step1, #step3').hide();
     $('#step2').show();
     $('#join-room').focus();
@@ -127,12 +127,16 @@ $(function () {
       const peerId = stream.peerId;
       const id = 'video_' + peerId + '_' + stream.id.replace('{', '').replace('}', '');
 
-      $('#videos').append($(
-        `<div class='mdl-cell mdl-cell--3-col mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone'>` +
-        '<div class="video_' + peerId + '" id="' + id + '">' +
-        // '<label>' + stream.peerId + ':' + stream.id + '</label>' +
-        '<video class="remoteVideos" autoplay playsinline>' +
-        '</div></div>'));
+      $('#userVideoArea').append($(
+        `<div class="pep video_${peerId} theirVideo" id="${id}">
+         <video class="avatarVideoWindow remoteVideos" id="${id}" autoplay playsinline>
+          </div > `
+      ));
+
+      $('.constrain-to-parent .pep').pep({
+        useCSSTranslation: false,
+        constrainTo: 'parent'
+      })
       const el = $('#' + id).find('video').get(0);
       el.srcObject = stream;
       el.play();
