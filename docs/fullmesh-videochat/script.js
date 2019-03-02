@@ -133,6 +133,11 @@ $(function () {
           </div > `
       ));
 
+      const scale = $(`#avatarWindowScale`).val();
+      $(`.avatarVideoWindow`).css({
+        "height": scale + "px",
+        "width": scale / 2 + "px"
+      });
       $('.constrain-to-parent .pep').pep({
         useCSSTranslation: false,
         constrainTo: 'parent'

@@ -112,4 +112,14 @@ jQuery(function () {
 
     });
 
+
+    //アバター表示ウィンドウサイズの一括変更
+    $(`#avatarWindowScale`).on(`input change`, function () {
+        const scale = $(this).val();
+        $(`.avatarVideoWindow`).css({
+            "height": scale + "px",
+            "width": scale / 2 + "px"
+        });
+        $(`#avatarWindowScaleValue`).html(scale + `px`);
+    });
 });

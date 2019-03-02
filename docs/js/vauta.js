@@ -55,7 +55,7 @@ var VAUTA = VAUTA || {};
         initRenderer(canvas);
 
         document.getElementById(TargetCanvas).style.height = 'auto';
-        document.getElementById(TargetCanvas).style.width = 'calc(100% - 1px)';
+        document.getElementById(TargetCanvas).style.width = 'calc(100% - 2px)';
 
         console.log("scene Ready")
     }
@@ -63,7 +63,7 @@ var VAUTA = VAUTA || {};
     const initRenderer = (canvas) => {
         renderer = new THREE.WebGLRenderer({
             antialias: false,                                   //負荷軽減目的（初期化後の変更は不可）
-            alpha: false,                                        //背景色は親要素に依存
+            alpha: false,                                        //背景色も描画する
             canvas: document.getElementById(TargetCanvas)
         });
         //高解像度なディスプレイの場合高負荷
@@ -79,9 +79,8 @@ var VAUTA = VAUTA || {};
     }
 
 
+    //TODO:jqueryを使わない
     VAUTA.setBackground = (color) => {
-        // color = parseInt(color, 16);
-        // renderer.setClearColor(color);
         switch (color) {
             case "red":
                 $(`main`).css(`background-color`, `#ff2400`);

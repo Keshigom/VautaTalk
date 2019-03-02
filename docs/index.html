@@ -5,7 +5,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<!-- skyway -->
-	<link rel="stylesheet" href="fullmesh-videochat/style.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="//cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
@@ -17,6 +16,7 @@
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-red.min.css" />
 	<!-- Material Design icon font -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 	<link rel="stylesheet" type="text/css" href="styles/main.css">
 
 </head>
@@ -47,7 +47,9 @@
 					<div id="step2">
 						<form id="make-call" class="pure-form">
 							<input type="text" placeholder="Join room..." id="join-room">
-							<button class="pure-button pure-button-success" type="submit" id="join-submit">Join</button>
+							<button
+								class="pure-button pure-button-success mdl-button mdl-js-button mdl-js-ripple-effect"
+								type="submit" id="join-submit">Join</button>
 						</form>
 						<!-- <p><strong>Warning:</strong> You may connect with people you don't know if you both use the same room name.</p> -->
 						<small><strong>注意：</strong>同じルーム名を使用した場合、<br>知らない人と接続する可能性があります。</small>
@@ -55,7 +57,9 @@
 					<!-- Call in progress -->
 					<div id="step3">
 						<p>ルーム名:<span id="room-id">...</span></p>
-						<p><a href="#" class="pure-button pure-button-error" id="end-call">End call</a></p>
+						<p><a href="#"
+								class="pure-button pure-button-error mdl-button mdl-js-button mdl-js-ripple-effect"
+								id="end-call">End call</a></p>
 					</div>
 				</li>
 				<!-- 基本設定 -->
@@ -71,11 +75,7 @@
 						<div class="select">
 							<label for="videoSource">Video source: </label><select id="videoSource"></select>
 						</div>
-						<label class="mdl-checkbox mdl-js-checkbox" for="isMirror">
-							<input type="checkbox" id="isMirror" class="mdl-checkbox__input toggleSetting" value=true
-								checked>
-							<span class="mdl-checkbox__label">ミラーモード</span>
-						</label>
+
 						<!-- アンチエイリアスは宣言時のみ変更可能 -->
 						<!-- <label class="mdl-checkbox mdl-js-checkbox" for="isAntialias">
 							<input type="checkbox" id="isAntialias" class="mdl-checkbox__input toggleSetting">
@@ -119,6 +119,20 @@
 						<table>
 							<tr>
 								<td class="thresholdItem">
+									ウィンドウサイズ
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input class="mdl-slider mdl-js-slider" id="avatarWindowScale" type="range"
+										min="256" max="1024" value="512">
+								</td>
+								<td>
+									:<span id="avatarWindowScaleValue">512px</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="thresholdItem">
 									大きさ
 								</td>
 							</tr>
@@ -154,6 +168,18 @@
 				<li class="mdl-layout">
 					<button class="mdl-button mdl-js-button mdl-js-ripple-effect accordion">検出設定</button>
 					<div class="closed">
+						<table>
+							<tr>
+								<td class="thresholdItem">
+									<label class="mdl-checkbox mdl-js-checkbox" for="isMirror">
+										<input type="checkbox" id="isMirror" class="mdl-checkbox__input toggleSetting"
+											value=true checked>
+										<span class="mdl-checkbox__label">反転</span>
+									</label>
+								</td>
+							</tr>
+						</table>
+
 						<!-- 右目 -->
 						<table>
 							<tr>
@@ -343,11 +369,19 @@
 
 				<div class="mdl-card mdl-shadow--4dp" id="uploadCard">
 					<div class="mdl-card__title">
-						<h2 class="mdl-card__title-text">Welcome !</h2>
+						<h2 class="mdl-card__title-text">Vauta (開発版)</h2>
 					</div>
+					<div class="mdl-card__supporting-text">
+						これは開発中のファイスキャプチャーアプリです。
+						動作を保障できません。
+						<br>
+						1人用のシンプルなものは<a href="https://vautasimple.netlify.com/">こちら</a>
+					</div>
+
 					<div class="mdl-card__supporting-text">
 						VRMファイルをドラッグ＆ドロップ
 					</div>
+
 
 					<div class="mdl-card__supporting-text">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
@@ -360,17 +394,8 @@
 
 				</div>
 			</div>
-			<!-- <canvas id="threeCanvas" style="z-index: 1;position: absolute;"></canvas> -->
-
-			<!-- <div class="pure-g"> -->
 
 			<!-- Video area -->
-			<!-- <div class="pure-u-2-3" id="video-container"> -->
-			<!-- <video class='pep' id="my-video" muted="true" autoplay playsinline></video> -->
-			<!-- <video id="my-video2" muted="true" autoplay playsinline></video> -->
-			<!-- <canvas id="testCanvas"></canvas>
-			<video id="testVideo" muted="true" autoplay playsinline></video> -->
-			<!-- <div id="their-videos"></div> -->
 			<div class="constrain-to-parent" id="userVideoArea">
 				<div class='pep avatarVideoWindow'>
 					<video class='pep avatarVideoWindow' id="my-video" muted="true" autoplay playsinline></video>
@@ -391,7 +416,6 @@
 		</div>
 		<div class="mdl-card__supporting-text" id="avatarMetaData">
 			<div>
-
 				<table id="avatarMetaTable"></table>
 			</div>
 		</div>
@@ -418,8 +442,6 @@
 	<!-- JeelizのWebカメラ画像を表示するキャンバス、必須？ -->
 	<canvas class='jeefacetransferCanvas' id='jeefacetransferCanvas'></canvas>
 
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-	<!-- <script src="lib/three.min.js"></script> -->
 	<script src="lib/OrbitControls.js"></script>
 	<script src="lib/GLTFLoader.js"></script>
 	<script src="lib/VRMLoader.js"></script>
