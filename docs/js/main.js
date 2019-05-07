@@ -1,3 +1,5 @@
+console.log("help me");
+
 jQuery(function () {
     //pep ウィンドウ移動可
     // $('#pep').pep();
