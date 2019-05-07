@@ -56,7 +56,6 @@ var VAUTA = VAUTA || {};
 
         document.getElementById(TargetCanvas).style.height = 'auto';
         document.getElementById(TargetCanvas).style.width = 'calc(100% - 2px)';
-
         console.log("scene Ready")
     }
 
